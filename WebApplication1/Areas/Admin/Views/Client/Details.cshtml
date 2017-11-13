@@ -1,0 +1,21 @@
+﻿@using System.Reflection;
+
+@model DotNetPizza.Models.ClientViewModel.ClientViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+<h2>Details Client</h2>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        @foreach (PropertyInfo pi in Model.GetType().GetProperties())
+        {
+
+
+            //@pi.GetCustomAttributes(typeof(DisplayAttribute), false).Cast<DisplayAttribute>()).Single().Name
+            <div class="row">
+                <div class="col-md-4">@pi.Name</div>
+                <div class="col-md-8">@pi.GetValue(Model)</div>
+            </div>
+        }
+    </div>
+</div>

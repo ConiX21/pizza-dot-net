@@ -1,0 +1,19 @@
+﻿.client-table-icon tr {
+    height: 60px;
+    width: 60px;
+
+}
+
+    .client-table-icon td.girl , .client-table-icon td.boy {
+        background-size: 50px 50px;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    .client-table-icon .girl {
+        background-image: url('../images/girl.png');
+    }
+
+    .client-table-icon .boy {
+        background-image: url('../images/boy.png');
+    }

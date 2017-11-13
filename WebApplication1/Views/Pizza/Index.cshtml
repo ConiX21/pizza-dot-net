@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DotNetPizza.Models.PizzaViewModel.PizzaViewModel>
+@{
+    ViewData["Title"] = "Nos pizzas";
+}
+<h2>Nos pizzas</h2>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2"></div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Image)</th>
+                    <th>@Html.DisplayNameFor(model => model.Title)</th>
+                    <th>@Html.DisplayNameFor(model => model.PriceHT)</th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/images/@item.Image">
+                        </td>
+                        <td>@item.Title</td>
+                        <td>@string.Format("{0:C2}", item.PriceTTC())</td>
+                        <td class="action">
+                            <form id="@item.PizzaID" asp-action="AddToCart" asp-controller="Cart" method="post">
+                                <input type="hidden" name="pizzaID" value="@item.PizzaID" />
+                                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                                <a class="btn btn-primary detail" data-pizza-id="@item.PizzaID">
+                                    <span class="glyphicon glyphicon-tasks"></span>
+                                </a>
+                                <button type="submit" class="btn btn-success">Add To Cart</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container-modal">
+
+</div>
+
+@section Scripts{
+    <script src="~/js/pizza-controller.js"></script>
+}

@@ -1,0 +1,16 @@
+﻿@model PizzaViewModel
+<div class="col-md-3">
+    <div class="thumbnail">
+        <img src="~/images/@Model.Image">
+
+        <div class="caption">
+            <h3>@Model.Title</h3>
+            <p>@Model.Description</p>
+            <p>
+                <a href="#" class="btn btn-primary">Commander</a>
+                <br />
+                <label class="price">@string.Format("{0:C2}", @Model.PriceTTC())</label>
+            </p>
+        </div>
+    </div>
+</div>

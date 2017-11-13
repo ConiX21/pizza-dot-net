@@ -1,0 +1,72 @@
+﻿@model DotNetPizza.Models.PizzaViewModel.PizzaViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="row">
+    <div class="col-md-12 vcenter">
+        <h2>Modification de pizza</h2>
+    </div>
+</div>
+<hr />
+<form asp-action="Create" class="form-horizontal" method="post" enctype="multipart/form-data">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-1">
+                <img src="~/images/@Model.Image" class="img-responsive img-circle" />
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Title" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PriceHT" class="col-md-2 control-label"></label>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">HT</div>
+                            <input asp-for="PriceHT" class="form-control" />
+                            <div class="input-group-addon">€</div>
+                        </div>
+                        <span asp-validation-for="PriceHT" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <span class="btn btn-primary btn-block fileinput-button">
+                            <span>Choisissez une image de pizza</span>
+                            <input type="file" asp-for="UploadImage" />
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-1 text-left vcenter">
+            <a asp-action="Index">Retour à la liste</a>
+        </div>
+        <div class="col-md-6 vcenter text-right">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

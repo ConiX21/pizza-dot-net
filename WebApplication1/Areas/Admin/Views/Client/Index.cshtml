@@ -1,0 +1,37 @@
+﻿@model IEnumerable<DotNetPizza.Models.ClientViewModel.ClientViewModel>
+
+@{
+
+    ViewData["Title"] = "Clients";
+}
+<h2>Clients</h2>
+<dir class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <table class="table table-striped client-table-icon">
+            <thead>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Gender)</td>
+                    <td>@Html.DisplayNameFor(model => model.ClientID)</td>
+                    <td>@Html.DisplayNameFor(model => model.Lastname)</td>
+                    <td>@Html.DisplayNameFor(model => model.Firstname)</td>
+                    <td></td>
+                </tr>
+            </thead>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td class="@c.GenderClass()"></td>
+                    <td>@c.ClientID</td>
+                    <td>@c.Lastname</td>
+                    <td>@c.Firstname</td>
+                    <td>
+                        <a asp-area="Admin" asp-action="Details" asp-route-id="@c.ClientID">
+                            <span class="glyphicon glyphicon-tasks"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</dir>
